@@ -3,10 +3,10 @@ const mysql = require('mysql2');
 
 // Configuração para usar variáveis de ambiente (Railway) ou fallback para local
 const pool = mysql.createPool({
-    host: process.env.DB_HOST || 'yamabiko.proxy.rlwy.net',
-    port: process.env.DB_PORT || 41584,
+    host: process.env.DB_HOST || 'mysql.railway.internal',
+    port: process.env.DB_PORT || 3306,
     user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || 'tKGeUlJlkUpmGlNRJYqiMCATwKfcluyv',
+    password: process.env.DB_PASSWORD || 'XllrDjUWUYqcyjwzklRLvUzOrlCBwDzP',
     database: process.env.DB_NAME || 'railway',
     ssl: {
         // Recomendado para conexões remotas, mas pode ser necessário desativar para testes
