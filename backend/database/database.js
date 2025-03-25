@@ -1,15 +1,15 @@
 require('dotenv').config();
 const mysql = require('mysql2');
 
-// Configuração para usar variáveis de ambiente (Railway) ou fallback para local
+// Configuração para usar variáveis de ambiente
 const pool = mysql.createPool({
-    host: process.env.DB_HOST || 'yamabiko.proxy.rlwy.net',
-    port: process.env.DB_PORT || 41584,
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || 'tKGeUlJlkUpmGlNRJYqiMCATwKfcluyv',
-    database: process.env.DB_NAME || 'railway',
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
     ssl: {
-        // Recomendado para conexões remotas, mas pode ser necessário desativar para testes
+        // Desativar SSL para conexões locais
         rejectUnauthorized: false
     },
     // Configurações de pool para melhor performance
