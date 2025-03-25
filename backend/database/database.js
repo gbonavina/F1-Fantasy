@@ -1,7 +1,6 @@
 require('dotenv').config();
 const mysql = require('mysql2');
 
-// Configuração para usar variáveis de ambiente
 const pool = mysql.createPool({
     host: process.env.DB_HOST ,
     port: process.env.DB_PORT ,
@@ -9,10 +8,8 @@ const pool = mysql.createPool({
     password: process.env.DB_PASSWORD ,
     database: process.env.DB_NAME ,
     ssl: {
-        // Desativar SSL para conexões locais
         rejectUnauthorized: false
     },
-    // Configurações de pool para melhor performance
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
