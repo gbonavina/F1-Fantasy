@@ -529,6 +529,8 @@ const updateDriverPoints = async () => {
                              (parseFloat(positionsGained[0].total) || 0) + 
                              ((parseInt(fastestLaps[0].total) || 0) * 3);
             
+            totalPoints = Math.max(totalPoints, 0);
+            
             console.log(`  Base fantasy points calculated for ${driver.nome}: ${totalPoints}`);
 
             // Round totalPoints to 1 decimal place
@@ -555,6 +557,7 @@ const updateDriverPoints = async () => {
                 
                 // Aplicar multiplicadores específicos para cada estrutura
                 let finalFantasyPoints = totalPoints;
+                
                 
                 // Debug: Mostrar estruturas encontradas
                 console.log(`  Team ${equipeId} has ${teamStructures.length} structures`);
@@ -635,6 +638,8 @@ const updateDriverPoints = async () => {
                             console.log(`    Unknown multiplier type: ${structure.multiplier_type}`);
                     }
                 }
+
+                finalFantasyPoints = Math.max(0, finalFantasyPoints);
                 
                 console.log(`  Final fantasy points for driver ${driver.nome} in team ${equipeId}: ${finalFantasyPoints.toFixed(2)}`);
                 
