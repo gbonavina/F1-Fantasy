@@ -15,11 +15,6 @@ const pool = mysql.createPool({
     queueLimit: 0
 });
 
-// Para debug - remover em produção
-pool.on('connection', function (connection) {
-    console.log('DB Connection established');
-});
-
 pool.on('error', function (err) {
     console.error('MySQL pool error:', err);
 });
