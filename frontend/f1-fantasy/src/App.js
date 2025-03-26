@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import WelcomePage from './pages/welcome_page';
-// import LoginPage from './pages/login_page';
+import Login from './pages/login';
 import Register from './pages/register';
 
 export default function App() {
@@ -10,7 +10,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<WelcomePage/>} />
                 <Route path="/register" element={<Register/>} />
-                {/* <Route path="/login" element={<Login/>} /> */}
+                <Route path="/login" element={<Login/>} />
             </Routes>
         </BrowserRouter>
     );

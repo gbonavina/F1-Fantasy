@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { useActionData, useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
+import BackIcon from '../assets/back.png'
 import "../styles/register.css"
 
 export default function Register() {
@@ -47,6 +48,10 @@ export default function Register() {
         }
     };
 
+    const handleBackClick = () => {
+        navigate('/');
+    }
+
 
     return (
         <div className="register-page">
@@ -54,6 +59,8 @@ export default function Register() {
                 <Logo className="register-logo" />
                 <h1 className="register-title">Fantasy</h1>
             </div>
+
+            <img src={BackIcon} alt="back" className="back-icon" onClick={handleBackClick}/>
 
             <div className="register-form-container">
                 {error && <p className="error-message">{error}</p>}
