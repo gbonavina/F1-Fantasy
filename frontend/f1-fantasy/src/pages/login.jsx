@@ -19,15 +19,25 @@ export default function Login() {
             [e.target.name]: e.target.value
         });
     }
-
+    
     const handleBackClick = () => {
         navigate('/');
+    }
+
+    const saveUserData = (data) => {
+        const userData = data.user || data;
+        
+        const expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + 7);
+    
+        document.cookie = `userId=${userData.id}; expires=${expirationDate.toUTCString()}; path=/`;
+        document.cookie = `userUsername=${userData.username}; expires=${expirationDate.toUTCString()}; path=/`;
+        
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log('Sending data:', formData);
             const response = await fetch('https://f1-fantasy-wxq9.onrender.com/login', {
                 method: 'POST',
                 headers: {
@@ -41,6 +51,7 @@ export default function Login() {
             console.log('Response data: ', data);
 
             if (response.ok) {
+                saveUserData(data);
                 navigate('/home');
             } else {
                 setError(data.message || 'Erro ao realizar o registro')

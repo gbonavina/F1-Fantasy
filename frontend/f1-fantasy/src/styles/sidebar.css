@@ -1,0 +1,141 @@
+@font-face {
+    font-family: 'f1-font';
+    src: url('../fonts/Formula1-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Adicionar um container para o cabeçalho com altura fixa */
+.sidebar-header {
+    position: relative;
+    height: 90px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.sidebar-logo {
+    width: 33%;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+}
+
+.sidebar-title {
+    position: absolute;
+    font-family: 'f1-font', sans-serif;
+    color: black;
+    top: 14px;
+    left: 112px;
+}
+
+.sidebar {
+    background-color: #ECECEC;
+    color: black;
+    width: 270px;
+    height: 95vh;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+/* Área de navegação principal - agora começa após o cabeçalho */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.sidebar .item {
+    text-decoration: none;
+    font-family: 'f1-font', sans-serif;
+    color: black;
+    margin: 0.8rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.sidebar .item:hover {
+    background-color: #fc4949;
+    transform: translateX(5px);
+}
+
+.sidebar h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.balance-info {
+    margin-top: auto;
+    margin-bottom: 1rem;
+    background-color: #1f1f2b;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #FF0000;
+}
+
+.balance-info h3 {
+    font-size: 0.9rem;
+    font-family: 'f1-font', sans-serif;
+    color: #ccc;
+    margin: 0 0 0.3rem 0;
+}
+
+.balance-info p {
+    font-size: 1.4rem;
+    font-weight: bold;
+    font-family: 'f1-font', sans-serif;
+    margin: 0;
+    color: #fff;
+}
+
+.create-team-button {
+    margin-top: auto;
+    margin-bottom: 1rem;
+    text-decoration: none;
+}
+
+.create-team-button button {
+    width: 100%;
+    background-color: #FF0000;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: 'f1-font', sans-serif;
+    transition: background-color 0.2s;
+}
+
+.create-team-button button:hover {
+    background-color: #d60000;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    text-decoration: none;
+    font-family: 'f1-font', sans-serif;
+    color: black;
+    border-top: 2px solid #2c2c3a;
+}
+
+.user-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 0.8rem;
+}
+
+.user h2 {
+    font-size: 1rem;
+    font-weight: 500;
+}

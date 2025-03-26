@@ -26,8 +26,8 @@ export default function WelcomePage() {
             </div>
         </div>
         <div className="welcome-buttons">
-            <button className="welcome-button" onClick={handleRegister}>Registrar-se!</button>
-            <button className="welcome-button" onClick={handleLogin}>Login!</button>
+            <button className="welcome-button" onClick={handleRegister}>REGISTRAR-SE!</button>
+            <button className="welcome-button" onClick={handleLogin}>LOGIN!</button>
         </div>
     </div>
     );
