@@ -81,7 +81,7 @@
 }
 
 .form-group input:focus::placeholder {
-    color: transparent;  /* Esconde o placeholder quando o campo estiver focado */
+    color: transparent;  
 }
 
 .error-message {

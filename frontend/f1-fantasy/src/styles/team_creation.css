@@ -1,0 +1,127 @@
+@font-face {
+    font-family: 'f1-font';
+    src: url('../fonts/Formula1-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.page-container {
+    display: flex;
+    width: 100%;
+}
+
+.team-creation {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 65vh;
+    padding: 20px;
+    position: relative;
+}
+
+.text-title {
+    margin-bottom: 20px;
+    margin-left: 130px;
+    text-align: center;
+    font-family: 'f1-font', sans-serif;
+    font-size: 38px;
+    letter-spacing: 2px;
+}
+
+.form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-left: 150px; 
+    margin-right: 0; 
+    top: 50px; 
+}
+
+.formGroup {
+    width: 150%; 
+    margin-bottom: 20px;
+}
+.formGroup input {
+    width: 100%;
+    padding: 25px;
+    font-size: 18px;
+    font-family: 'f1-font', sans-serif;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+    transition: all 0.3s ease;
+    color: #333;
+}
+
+.formGroup input:focus {
+    outline: none;
+    font-size: 25px;
+    background-color: #f2f2f2;
+    border-color: #007bff;
+}
+
+.formGroup input:focus::placeholder {
+    color: #aaa;
+    font-size: 16px;
+}
+
+.formGroup input:focus::placeholder {
+    color: transparent; 
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+
+.submit-button {
+    margin-top: 40px;
+    margin-left: 0; 
+    width: 60%;
+    max-width: 400px;
+    padding: 19px;
+    font-size: 18px;
+    font-family: 'f1-font', sans-serif;
+    background-color: #FF0000;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+.submit-button:hover {
+    background-color: #d60000;
+}
+
+.error-message {
+    color: #e10600;
+    margin-bottom: 10px;
+    font-family: 'f1-family', sans-serif;
+    text-align: center;
+}
+
+.back-icon-team {
+    position: absolute;
+    top: 30px;
+    left: 330px;
+    width: 30px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.back-icon-team:hover {
+    transform: scale(1.1);
+}
