@@ -9,6 +9,13 @@ require('dotenv').config();
 const app = fastify();
 const port = 5000;
 
+const fastifyCors = require('@fastify/cors');
+app.register(fastifyCors, { 
+  origin: true,  
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+});
+
 // Sistema de agendamento de atualizações
 console.log('Configurando agendamento de atualizações de corridas...');
 

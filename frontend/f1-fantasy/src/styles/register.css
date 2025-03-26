@@ -1,0 +1,110 @@
+@font-face {
+    font-family: 'f1-font';
+    src: url('../fonts/Formula1-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.register-page{ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    font-family: 'f1-font', sans-serif;
+}
+
+.register-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 70px;
+}
+
+.register-logo {
+    width: 324px;
+    margin-right: -700px;
+    margin-top: 30px;
+}
+
+.register-title {
+    text-align: center;
+    font-size: 115px;
+    font-weight: normal;
+    margin-top: 105px;
+    margin-left: 725px;
+    letter-spacing: 2px;
+}
+
+.register-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 15vh;
+    background-color: white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 18px;
+    font-size: 16px;
+    font-family: 'f1-font', sans-serif;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+    transition: all 0.3s ease;
+    color: #333;
+}
+
+.form-group input:focus {
+    outline: none;
+    background-color: #f2f2f2;
+    border-color: #007bff;
+}
+
+.form-group input::placeholder {
+    color: #aaa;
+    font-size: 16px;
+}
+
+.form-group input:focus::placeholder {
+    color: transparent;  /* Esconde o placeholder quando o campo estiver focado */
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.register-button {
+    margin-top: 60px;
+    width: 80%;
+    max-width: 400px;
+    padding: 19px;
+    font-size: 18px;
+    font-family: 'f1-font', sans-serif;
+    background-color: #FF0000;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+    background-color: #d60000;
+}
