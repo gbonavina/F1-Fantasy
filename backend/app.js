@@ -11,9 +11,11 @@ const port = 5000;
 
 const fastifyCors = require('@fastify/cors');
 app.register(fastifyCors, { 
-  origin: true,  
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
+  origin: ['http://localhost:3000', 'http://f1-fantasy.vercel.app'],  
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+  preflightContinue: true
 });
 
 console.log('Configurando agendamento de atualizações de corridas...');

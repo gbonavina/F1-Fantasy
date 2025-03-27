@@ -12,6 +12,7 @@ export default function Home() {
     const [raceStandings, setRaceStandings] = useState([]);
     const [driversLoading, setDriversLoading] = useState(true);
     const [raceLoading, setRaceLoading] = useState(true);
+    const [circuitLoading, setCircuitLoading] = useState(true);
 
     useEffect(() => {
         setDriversLoading(true);
@@ -43,6 +44,11 @@ export default function Home() {
                 setRaceLoading(false);
             })
     }, []);
+
+    // useEffect(() => {
+    //     setCircuitLoading(true);
+
+    // }, []);
 
     return (
         <div className="home">
@@ -102,6 +108,20 @@ export default function Home() {
                         }
                         className="race-results"
                     />
+
+
+                    {/* <Card 
+                        content={
+                            circuitLoading ? (
+                                <div className="loading-spinner"> Carregando... </div>
+                            ) : (
+                                <div className="circui-card"> 
+                                    <img src="../assets/Japan_circuit.avif" className="circuit-image"/>
+                                </div>
+                            )
+                        }
+
+                    /> */}
                 </div>
             </div>
         </div>
