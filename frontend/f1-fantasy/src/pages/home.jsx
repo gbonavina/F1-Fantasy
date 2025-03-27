@@ -41,9 +41,10 @@ export default function Home() {
                                     <li key={index} className="driver-item">
                                         <span className="driver-rank">{index + 1}</span>
                                         <div className="driver-info">
-                                            <span className="driver-name">{driver.name}</span>
-                                            {driver.team && <span className="driver-team">{driver.team}</span>}
-                                            {driver.value && <span className="driver-value">${driver.value}</span>}
+                                            <div className="driver-name-value">
+                                                <span className="driver-name">{driver.name}</span>
+                                                {driver.marketValue && <span className="driver-value">${driver.marketValue} M</span>}
+                                            </div> 
                                         </div>
                                     </li>
                                 ))}
