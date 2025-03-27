@@ -1,0 +1,14 @@
+.card-container {  
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    padding: 16px;
+    position: relative;
+}
+
+.valueble-drivers {
+    position: absolute;
+    top: 490px;
+    left: 480px;
+}
