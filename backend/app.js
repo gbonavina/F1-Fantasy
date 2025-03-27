@@ -83,19 +83,32 @@ app.get('/test-db', async (req, reply) => {
   }
 });
 
-app.get("/:year/results/:track", async (req, reply) => {
+app.get("/:year/results/:track?", async (req, reply) => {
   const track = req.params.track;
   const year = req.params.year;
-  console.log(track);
 
   try {
-    const race_results = await getRace(track, year);
-    console.log(race_results); 
+    let race_results;
+
+    if (!track || track === 'latest') {    
+      const completedRaces = await getCompletedRaces(year);
+      
+      if (Object.keys(completedRaces).length === 0) {
+        return reply.status(404).send({ error: 'No completed races found for this year' });
+      }
+      
+      const latestRaceKey = Object.keys(completedRaces).pop();
+      
+      race_results = completedRaces[latestRaceKey];
+    } else {
+
+      race_results = await getRace(track, year);
+    }
 
     reply.send(race_results);
   } catch (error) {
-    console.error(error);
-    reply.send({ error: 'Error fetching race data' });
+    console.error('Error fetching race data:', error);
+    reply.status(500).send({ error: 'Error fetching race data' });
   }
 });
 

@@ -5,14 +5,14 @@ import Card from "../components/Cards";
 import "../styles/home.css"
 
 export default function Home() {
-    const URL = "https://f1-fantasy-wxq9.onrender.com/driver/most-valuable"
+    const highValue_URL = "https://f1-fantasy-wxq9.onrender.com/driver/most-valuable"
 
     const [drivers, setDrivers] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         setLoading(true);
-        fetch(URL)
+        fetch(highValue_URL)
             .then((response) => response.json())
             .then((data) => {
                 setDrivers(data);
@@ -53,6 +53,30 @@ export default function Home() {
                     }
                     className="valuable-drivers"
                 />
+
+                <Card 
+                    title={"ÚLTIMA CORRIDA"}
+                    content={
+                        loading ? (
+                            <div className="loading-spinner">Carregando...</div>
+                        ) : (
+                            <ul className="race-standings">
+                                {drivers.map((driver, index) => (
+                                    <li key={index} className="driver-item">
+                                        <span className="driver-rank">{index + 1}</span>
+                                        <div className="driver-info">
+                                            <div className="driver-name-value">
+                                                <span className="driver-name">{driver.name}</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        )
+
+                    }
+                />
+                
             </div>
         </div>
     )
