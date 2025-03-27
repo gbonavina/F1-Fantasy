@@ -1,0 +1,62 @@
+@font-face {
+    font-family: 'f1-font';
+    src: url('../fonts/Formula1-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.search-bar {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 45px 12px 15px;
+    border-radius: 25px;
+    border: 1px solid #E1E1E1;
+    font-size: 16px;
+    font-family: 'f1-font', sans-serif;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: #F3F3F3;
+    color: black;
+}
+
+.search-bar input::placeholder {
+    color: #E3E3E3;
+    opacity: 1;
+}
+
+.search-bar input:focus {
+    border-color: #ff1801;
+    box-shadow: 0 0 5px rgba(255, 24, 1, 0.3);
+}
+
+.search-bar button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+
+.search-bar button:hover {
+    color: #ff1801;
+}
+
+.search-bar button img {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
