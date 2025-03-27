@@ -5,6 +5,7 @@
     justify-content: center;
     padding: 16px;
     position: relative;
+    height: 85vh; 
 }
 
 .valuable-drivers {
@@ -13,6 +14,29 @@
     left: 480px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
+}
+
+.card:nth-child(2) {
+    position: absolute;
+    top: 40px;
+    left: 1300px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.card:nth-child(2):hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card:nth-child(2) .card-header {
+    background-color: #1a1a1a; 
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px;
+    border-bottom: 3px solid #000; 
 }
 
 .valuable-drivers:hover {
@@ -30,10 +54,44 @@
     border-bottom: 3px solid #b00500;
 }
 
-.driver-list {
+.driver-list, .race-standings {
     list-style-type: none;
     padding: 0;
     margin: 0;
+}
+
+.race-standings .driver-rank {
+    margin-right: 40px; 
+    width: 40px;
+    height: 40px;
+}
+
+.race-standings {
+    max-height: 650px;
+    overflow-y: auto; 
+    scrollbar-width: thin; 
+}
+
+.race-standings::-webkit-scrollbar {
+    width: 8px;
+}
+
+.race-standings::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.race-standings::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.race-standings::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.race-results .card-content {
+    max-height: 800px; 
 }
 
 .driver-item {
@@ -123,3 +181,30 @@
     margin-left: 8px; 
 }
 
+.race-results {
+    position: absolute !important;
+    top: 420px;
+    left: 840px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.race-results:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.race-results .card-header {
+    background-color: #1a1a1a; 
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px;
+    border-bottom: 3px solid #000;
+}
+
+.trophy-emoji {
+    margin-left: 16px;
+    font-size: 16px; 
+}
