@@ -219,7 +219,6 @@ const syncDrivers = async () => {
     }
 };
 
-// to-do: melhorar isso aqui para que o valor do piloto seja mais dinâmico
 // Função auxiliar para calcular o valor do piloto com base na equipe
 function calculateDriverValue(team) {
     // Valores base por equipe (ajuste conforme necessário)
@@ -982,6 +981,26 @@ const upgradeTeamStructure = async (structure_owned_id, equipe_id) => {
     }
 };
 
+const getHighValueDrivers = async () => {
+    try {
+        const query = `
+            SELECT nome, valor 
+            FROM pilotos
+            ORDER BY valor DESC
+            LIMIT 5
+        `;
+        const [drivers] = await pool.execute(query);
+
+        return drivers.map(driver => ({
+            name: driver.nome,
+            marketValue: driver.valor
+        }));
+    } catch (error) {
+        console.error("Error fetching top market value drivers", error);
+        return { error: "Failed to fetch top market value drivers" };
+    }
+};
+
 module.exports = { 
     createTeam, 
     getUserTeams, 
@@ -992,5 +1011,6 @@ module.exports = {
     updateDriverValues,
     getAvailableStructures,
     buyTeamStructure,
-    upgradeTeamStructure
+    upgradeTeamStructure,
+    getHighValueDrivers
 };

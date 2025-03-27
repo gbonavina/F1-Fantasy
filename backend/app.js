@@ -1,5 +1,5 @@
 const { getRace, getCompletedRaces, getNextRace } = require('./modules/data_modules');
-const { createTeam, getUserTeams, updateLastRace, updateDriverPoints, buyDriver, sellDriver, buyTeamStructure, upgradeTeamStructure } = require('./modules/fantasy_modules');
+const { createTeam, getUserTeams, updateLastRace, updateDriverPoints, buyDriver, sellDriver, buyTeamStructure, upgradeTeamStructure, getHighValueDrivers } = require('./modules/fantasy_modules');
 const fastify = require('fastify');
 const pool = require('./database/database');
 const bcrypt = require('bcryptjs');
@@ -16,7 +16,6 @@ app.register(fastifyCors, {
   credentials: true
 });
 
-// Sistema de agendamento de atualizações
 console.log('Configurando agendamento de atualizações de corridas...');
 
 // Verificar atualizações de corridas todos os dias às 12:00
@@ -24,12 +23,10 @@ cron.schedule('0 12 * * *', async () => {
   console.log('Executando verificação agendada de atualizações de corrida...');
   
   try {
-    // Verificar se houve alguma corrida recente
     const nextRace = await getNextRace();
     const currentYear = new Date().getFullYear();
     const completedRaces = await getCompletedRaces(currentYear);
     
-    // Verificar se há novas corridas completadas desde a última verificação
     const [lastUpdate] = await pool.execute(
       'SELECT value FROM system_settings WHERE name = "last_race_update"'
     );
@@ -46,15 +43,12 @@ cron.schedule('0 12 * * *', async () => {
       
       console.log('Corrida recente detectada. Atualizando dados...');
       
-      // Atualizar dados da corrida
       await updateLastRace();
       console.log('Dados da corrida atualizados');
       
-      // Atualizar pontos dos pilotos
       await updateDriverPoints();
       console.log('Pontos dos pilotos atualizados');
       
-      // Informar sobre a próxima corrida
       if (nextRace) {
         console.log(`Próxima corrida: ${nextRace.name} em ${nextRace.date}`);
       } else {
@@ -285,7 +279,6 @@ app.post('/team/structures/upgrade/:team/:structure_id', async (req, reply) => {
   }
 });
 
-// Adicionar esta rota no app.js
 app.get('/team/details/:team_id', async (req, reply) => {
   const team_id = req.params.team_id;
 
@@ -346,7 +339,6 @@ app.get('/team/details/:team_id', async (req, reply) => {
   }
 });
 
-// Adicionar rota para ver estruturas disponíveis
 app.get('/structures', async (req, reply) => {
   try {
     const [structures] = await pool.execute('SELECT * FROM team_structures');
@@ -447,3 +439,17 @@ app.post('/admin/force-update', async (req, reply) => {
   }
 });
 
+app.get('/driver/most-valuable', async (req, reply) => {
+  try {
+    const topDrivers = await getHighValueDrivers();
+
+    if (topDrivers.error) {
+      return reply.status(500).send({error: topDrivers.error});
+    }
+
+    reply.send(topDrivers);
+  } catch (error) {
+    console.error("Error fetching top drivers data", error);
+    reply.status(500).send({error: 'Failed to fetch most valuable drivers'});
+  }
+});
