@@ -85,6 +85,27 @@ app.get('/test-db', async (req, reply) => {
   }
 });
 
+// Criar um endpoint pra pegar qual foi a ultima corrida pra poder atualizar as imagens
+app.get("/:year/last-circuit", async (req, reply) => {
+  const year = req.params.year;
+
+  try {
+    const completedRaces = await getCompletedRaces(year);
+    
+    if (Object.keys(completedRaces).length === 0) {
+      return reply.status(404).send({error: 'No completed races found for this year'});
+    }
+    
+    const latestRaceKey = Object.keys(completedRaces).pop();
+  
+    reply.send(latestRaceKey);
+  } catch (error) {
+    console.error("Error fetching race data:", error);
+    reply.status(500).send({Error: "Error fetching race data"});
+  }
+
+});
+
 app.get("/:year/results/:track?", async (req, reply) => {
   const track = req.params.track;
   const year = req.params.year;
